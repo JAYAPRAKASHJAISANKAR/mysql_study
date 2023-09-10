@@ -1,0 +1,41 @@
+# ER (Entity-Relationship) Diagram in DBMS
+
+![ER Diagram](https://example.com/path/to/er_diagram.png)
+
+The ER model, which stands for Entity-Relationship model, is a high-level data model used to define data elements and relationships for a specified system. It provides a conceptual design for the database and offers a simple and easy-to-understand view of data. In ER modeling, the database structure is represented as a diagram called an entity-relationship diagram.
+
+## Components of an ER Diagram
+
+### 1. Entity
+
+An entity can be any object, class, person, or place and is represented as rectangles in the ER diagram. In an organization context, examples of entities include managers, products, employees, and departments.
+
+#### Weak Entity
+
+A weak entity depends on another entity and doesn't have a key attribute of its own. Weak entities are represented by a double rectangle.
+
+### 2. Attribute
+
+Attributes describe the properties of an entity and are represented as ellipses in the ER diagram. Examples of attributes include ID, age, contact number, and name.
+
+- **Key Attribute:** The main characteristic of an entity, often representing a primary key, is represented by an ellipse with underlined text.
+  
+- **Composite Attribute:** An attribute composed of many other attributes is known as a composite attribute, represented by an ellipse with connected ellipses.
+  
+- **Multivalued Attribute:** Attributes that can have more than one value are called multivalued attributes and are represented by double ovals. For example, a student can have multiple phone numbers.
+  
+- **Derived Attribute:** Derived attributes can be calculated from another attribute and are represented by dashed ellipses. For example, a person's age can be derived from their date of birth.
+
+### 3. Relationship
+
+Relationships describe the connections between entities and are represented by diamonds or rhombuses in the ER diagram.
+
+#### Types of Relationships
+
+- **One-to-One Relationship:** When one instance of an entity is associated with the relationship, it's a one-to-one relationship. For example, a female can marry one male, and vice versa.
+  
+- **One-to-Many Relationship:** When one instance of the entity on the left is associated with multiple instances of the entity on the right, it's a one-to-many relationship. For example, scientists can invent many inventions, but each invention is associated with one scientist.
+  
+- **Many-to-One Relationship:** When multiple instances of the entity on the left are associated with one instance of the entity on the right, it's a many-to-one relationship. For example, a student enrolls in only one course, but a course can have many students.
+  
+- **Many-to-Many Relationship:** When multiple instances of both entities are associated with each other, it's a many-to-many relationship. For example, employees can be assigned to many projects, and projects can have many employees.
