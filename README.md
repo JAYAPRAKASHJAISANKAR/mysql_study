@@ -1,5 +1,3 @@
-# mysql_study
-
 ## MYSQL_Studies
 
 ### Overview
