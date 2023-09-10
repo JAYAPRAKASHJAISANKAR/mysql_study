@@ -1,0 +1,111 @@
+Database Design Principles:
+
+Effective database design is critical for data integrity and efficiency.
+Follow principles like normalization, data modeling, and entity-relationship diagrams (ERD) to create well-structured databases.
+NoSQL Databases:
+
+In contrast to relational databases like MySQL, NoSQL databases (e.g., MongoDB) store data in non-tabular formats.
+NoSQL databases are suitable for handling unstructured or semi-structured data and provide scalability advantages.
+Database Maintenance:
+
+Regular database maintenance includes tasks like optimizing queries, monitoring performance, and cleaning up old data.
+Maintenance routines help keep the database running smoothly.
+Database Backup and Recovery Strategies:
+
+Develop comprehensive backup and recovery strategies to protect data against loss or corruption.
+Consider strategies like full backups, incremental backups, and point-in-time recovery.
+Data Migration:
+
+Data migration involves transferring data from one database to another or from one system to another.
+Use tools like MySQL's mysqldump and mysqlimport for efficient data migration.
+Database Monitoring and Profiling:
+
+Implement monitoring tools to track database performance and identify bottlenecks.
+Profiling helps analyze query execution and optimize for speed.
+Database Sharding:
+
+Sharding is a method of horizontal database partitioning to distribute data across multiple servers or databases.
+It's used to handle large-scale data and improve performance.
+Database High Availability:
+
+Ensure database availability through techniques like failover clustering, replication, and load balancing.
+High availability minimizes downtime.
+Code Examples:
+
+Here are SQL code examples for some of the concepts mentioned above:
+
+Database Design Principles:
+
+Creating a well-designed database involves creating tables with appropriate relationships. While there's no specific code for design principles, here's an example illustrating table relationships:
+
+-- Creating tables with relationships
+CREATE TABLE departments (
+department_id INT PRIMARY KEY,
+department_name VARCHAR(50)
+);
+
+CREATE TABLE employees (
+employee_id INT PRIMARY KEY,
+first_name VARCHAR(50),
+last_name VARCHAR(50),
+department_id INT,
+FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+NoSQL Databases:
+
+NoSQL databases have different query languages and data structures. Here's an example of inserting data into a MongoDB NoSQL database:
+
+// Inserting data into a MongoDB collection
+db.products.insert({
+product_id: 1,
+product_name: "Widget",
+price: 10.99
+});
+Database Maintenance:
+
+Regular maintenance tasks often include query optimization and data cleanup. Here's an example of optimizing a MySQL query:
+
+-- Query optimization example
+EXPLAIN SELECT \* FROM orders WHERE order_date >= '2023-01-01';
+Database Backup and Recovery Strategies:
+
+Creating backups is crucial for data recovery. Here's an example of creating a MySQL database backup using mysqldump:
+
+# Create a MySQL database backup
+
+mysqldump -u username -p database_name > backup.sql
+Data Migration:
+
+Migrating data may involve transferring data between databases. Here's an example of importing data into a MySQL database using mysqlimport:
+
+# Import data into a MySQL database
+
+mysqlimport -u username -p database_name data_to_import.csv
+Database Monitoring and Profiling:
+
+Monitoring tools help track performance. Profiling SQL queries can be done within MySQL to analyze performance. Here's an example:
+
+-- Enable query profiling
+SET profiling = 1;
+
+-- Run your SQL query here
+
+-- Show query profiling results
+SHOW PROFILES;
+Database Sharding:
+
+Sharding typically involves configuring your database system to distribute data across shards. The specifics depend on the database technology being used.
+
+Database High Availability:
+
+High availability can be achieved through techniques like setting up MySQL replication. Here's a simplified example:
+
+-- Setting up MySQL replication
+-- On the master server
+CHANGE MASTER TO
+MASTER_HOST = 'master_server',
+MASTER_USER = 'replication_user',
+MASTER_PASSWORD = 'password';
+
+-- On the slave server
+START SLAVE;

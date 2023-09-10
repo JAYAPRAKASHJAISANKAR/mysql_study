@@ -1,0 +1,89 @@
+SQL Constraints:
+
+Constraints are pivotal rules that uphold the integrity of data within a database. Here are common constraints:
+
+PRIMARY KEY Constraint:
+
+The PRIMARY KEY constraint ensures that each row in a table is unique and serves as an exclusive identifier for that row.
+
+CREATE TABLE employees (
+employee_id INT PRIMARY KEY,
+first_name VARCHAR(50),
+last_name VARCHAR(50)
+);
+UNIQUE Constraint:
+
+The UNIQUE constraint guarantees that all values in a column are distinct.
+
+CREATE TABLE customers (
+customer_id INT UNIQUE,
+customer_name VARCHAR(100)
+);
+NOT NULL Constraint:
+
+The NOT NULL constraint guarantees that a column cannot contain NULL values.
+
+CREATE TABLE orders (
+order_id INT PRIMARY KEY,
+order_date DATE NOT NULL,
+total_amount DECIMAL(10, 2) NOT NULL
+);
+CHECK Constraint:
+
+The CHECK constraint enforces specific conditions on a column.
+
+CREATE TABLE products (
+product_id INT PRIMARY KEY,
+product_name VARCHAR(100),
+unit_price DECIMAL(10, 2) CHECK (unit_price > 0)
+);
+FOREIGN KEY Constraint:
+
+The FOREIGN KEY constraint connects a column to a primary key in another table, ensuring referential integrity.
+
+CREATE TABLE orders (
+order_id INT PRIMARY KEY,
+customer_id INT,
+order_date DATE,
+FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+Transactions:
+
+A transaction represents a series of SQL statements executed as a single, cohesive unit of work. Transactions guarantee that database operations adhere to the ACID properties (Atomicity, Consistency, Isolation, Durability).
+
+To manage transactions, use the following commands:
+
+BEGIN: Initiates a transaction.
+COMMIT: Finalizes and applies the transaction.
+ROLLBACK: Undoes the transaction, returning to the previous state.
+Views:
+
+Views are virtual tables derived from SELECT queries. They simplify complex queries and regulate access to specific data. Views do not store data; they are saved queries.
+
+Stored Procedures:
+
+Stored procedures are precompiled collections of one or more SQL statements. They are stored within the database and can be executed with a single call. Stored procedures enhance code reusability, security, and performance.
+
+Triggers:
+
+Triggers are database objects that automatically execute in response to specific events (e.g., INSERT, UPDATE, DELETE). They serve to enforce business rules or audit changes in the database.
+
+Normalization:
+
+Database normalization organizes data to minimize redundancy. Various normal forms (1NF, 2NF, 3NF, BCNF, etc.) guide this process, ensuring data integrity.
+
+Indexing:
+
+Indexes enhance database performance by facilitating swift access to rows based on values in one or more columns. Selecting the right columns to index is crucial for optimizing query performance.
+
+Backup and Recovery:
+
+To safeguard against data loss due to hardware failures, errors, or corruption, regularly backup your database. MySQL offers multiple backup methods, including mysqldump and binary backups.
+
+Security:
+
+Implement robust security measures to protect your database. This includes using strong passwords, restricting user privileges, and regularly updating MySQL and server software to address security vulnerabilities.
+
+Scaling and Replication:
+
+As your application grows, consider scaling techniques like replication to distribute workloads and boost availability. Replication involves real-time data copying from one database to another.

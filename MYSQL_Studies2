@@ -1,0 +1,103 @@
+Full-Text Search:
+
+Full-Text Search is a feature in MySQL that allows you to search for text within columns efficiently.
+You can use the MATCH and AGAINST operators in a SELECT statement to perform full-text searches.
+Stored Functions:
+
+Stored functions in MySQL are reusable pieces of code that return a single value.
+They are similar to stored procedures but return values instead of performing actions.
+Stored Triggers:
+
+Stored triggers are similar to stored procedures but are automatically invoked when specific events occur in the database, such as INSERT, UPDATE, or DELETE operations.
+Subqueries:
+
+Subqueries are queries nested inside another query.
+They can be used in various SQL statements like SELECT, INSERT, UPDATE, and DELETE to retrieve or manipulate data based on the results of another query.
+Views with JOINs:
+
+Views can be created using JOIN operations to combine data from multiple tables.
+They simplify complex queries involving multiple tables.
+Common Table Expressions (CTEs):
+
+CTEs are temporary result sets that you can reference within a SELECT, INSERT, UPDATE, or DELETE statement.
+They improve the readability and maintainability of complex queries.
+Window Functions:
+
+Window functions are used to perform calculations across a set of table rows that are related to the current row.
+They are often used for tasks like ranking, pagination, and calculating moving averages.
+Code Examples:
+
+Here are SQL code examples for some of the concepts mentioned above:
+
+Full-Text Search:
+
+
+-- Create a full-text index
+CREATE FULLTEXT INDEX product_search ON products (product_name);
+
+-- Perform a full-text search
+SELECT * FROM products WHERE MATCH(product_name) AGAINST('search_query');
+Stored Functions:
+
+
+-- Create a stored function
+DELIMITER //
+CREATE FUNCTION calculate_total(price DECIMAL(10, 2), quantity INT)
+RETURNS DECIMAL(10, 2)
+BEGIN
+    DECLARE total DECIMAL(10, 2);
+    SET total = price * quantity;
+    RETURN total;
+END //
+DELIMITER ;
+
+-- Use the stored function
+SELECT product_name, calculate_total(unit_price, 5) AS total_price FROM products;
+Stored Triggers:
+
+-- Create a stored trigger
+DELIMITER //
+CREATE TRIGGER before_insert_employee
+BEFORE INSERT ON employees
+FOR EACH ROW
+BEGIN
+    SET NEW.hire_date = NOW();
+END //
+DELIMITER ;
+
+-- The trigger will set the hire_date to the current date before inserting a new employee.
+Subqueries:
+
+
+-- Using a subquery to find employees with salaries above the average salary
+SELECT first_name, last_name, salary
+FROM employees
+WHERE salary > (SELECT AVG(salary) FROM employees);
+Views with JOINs:
+
+
+-- Creating a view that joins two tables
+CREATE VIEW customer_orders AS
+SELECT customers.customer_id, customers.customer_name, orders.order_date
+FROM customers
+JOIN orders ON customers.customer_id = orders.customer_id;
+Common Table Expressions (CTEs):
+
+
+-- Using a CTE to find the highest-paid employees in each department
+WITH CTE AS (
+    SELECT department_id, MAX(salary) AS max_salary
+    FROM employees
+    GROUP BY department_id
+)
+SELECT employees.*
+FROM employees
+JOIN CTE ON employees.department_id = CTE.department_id AND employees.salary = CTE.max_salary;
+Window Functions:
+
+
+-- Using a window function to rank employees by salary within each department
+SELECT first_name, last_name, department_id, salary, 
+       RANK() OVER(PARTITION BY department_id ORDER BY salary DESC) AS salary_rank
+FROM employees;
+These examples illustrate how to implement various advanced SQL concepts in MySQL. Continue to explore these topics to enhance your proficiency in managing and querying databases using MySQL.
